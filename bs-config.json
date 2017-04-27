@@ -1,5 +1,6 @@
 {
   "open":false,
+  "codeSync": false,
   "server": {
     "baseDir": "src",
     "routes": {
