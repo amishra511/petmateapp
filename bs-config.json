@@ -1,5 +1,12 @@
 {
   "open":false,
-  "codeSync": false
-
+  "codeSync": false,
+   "files": "[ ]",
+"watchOptions": { },
+  "server": {
+    "baseDir": "",
+    "routes": {
+      "/node_modules": "node_modules"
+    }
+  }
 }
