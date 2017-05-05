@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { Jsonp, URLSearchParams } from '@angular/http';
 import { PetFinder } from './petfinderapi/petfinder';
 
+
 import 'rxjs/add/operator/map';
 
 import 'rxjs/add/operator/toPromise';

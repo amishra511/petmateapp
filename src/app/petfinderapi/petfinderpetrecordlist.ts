@@ -1,4 +1,8 @@
 import {PetfinderPetRecord} from './petfinderpetrecord';
+import {JsonObject, JsonProperty} from "json2typescript";
+
+@JsonObject
 export class PetfinderPetRecordList{
-    pet: PetfinderPetRecord
+     @JsonProperty("pet")
+    public pet: PetfinderPetRecord = undefined;
 }

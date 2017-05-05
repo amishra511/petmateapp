@@ -1,4 +1,4 @@
 export enum PetGenderType{
-    M,
-    F
+    M = <any>'M',
+    N= <any>'N'
 }

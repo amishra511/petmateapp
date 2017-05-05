@@ -6,5 +6,5 @@ export enum PetOptionType{
     NO_CLAWS=<any>'noClaws',
     HAS_SHOTS=<any>'hasShots',
     HOUSEBROKEN=<any>'housebroken',
-    ALTERED=<any>'altered',
+    ALTERED=<any>'altered'
 }

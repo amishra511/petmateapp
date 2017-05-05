@@ -1,5 +1,8 @@
 import {PetPhotoType} from './petphototype';
+import {JsonObject, JsonProperty} from "json2typescript";
 
+@JsonObject
 export class Photos{
-    photo: PetPhotoType[];
+      @JsonProperty("photo", [PetPhotoType])
+    public photo: PetPhotoType[];
 }

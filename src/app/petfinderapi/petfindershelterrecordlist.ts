@@ -1,5 +1,8 @@
 import {PetfinderShelterRecord} from './petfindershelterrecord';
+import {JsonObject, JsonProperty} from "json2typescript";
 
+@JsonObject
 export class PetfinderShelterRecordList{
-    shelter:PetfinderShelterRecord[];
+    @JsonProperty("shelter", [PetfinderShelterRecord])
+    public shelter:PetfinderShelterRecord[] = undefined;
 }

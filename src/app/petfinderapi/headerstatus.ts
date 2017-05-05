@@ -1,4 +1,9 @@
+import {JsonObject, JsonProperty} from "json2typescript";
+
+@JsonObject
 export class Status{
-    code: number;
-    message:string;
+    @JsonProperty("code")
+    public code: number = undefined;
+    @JsonProperty("message")
+    public message:string = undefined;
 }
