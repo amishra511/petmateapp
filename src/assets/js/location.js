@@ -20,7 +20,7 @@ function initAutocomplete() {
   // location types.
   autocomplete = new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-      {types: ['geocode']});
+    { types: ['geocode'] });
 
   // When the user selects an address from the dropdown, populate the address
   // fields in the form.
@@ -51,7 +51,7 @@ function fillInAddress() {
 // as supplied by the browser's 'navigator.geolocation' object.
 function geolocate() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition(function (position) {
       var geolocation = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -64,3 +64,28 @@ function geolocate() {
     });
   }
 }
+
+var myExtObject = (function () {
+
+  return {
+    geolocate: function () {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy
+          });
+          autocomplete.setBounds(circle.getBounds());
+        });
+      }
+    },
+    func2: function () {
+      alert('function 2 called');
+    }
+  }
+
+})(myExtObject || {})

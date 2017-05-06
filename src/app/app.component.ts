@@ -5,8 +5,9 @@ import { RootObject } from './petfinderapi/rootobject';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { JsonConvert } from "json2typescript";
+import '../assets/js/location.js';
 
-declare var geolocate: any;
+declare var myExtObject: any;
 
 @Component({
   selector: 'app-root',
@@ -51,8 +52,8 @@ export class AppComponent {
       () => console.log('Finished'));
   }
 
-  callGeolocate(){
-      geolocate();
+  callGeolocate(event: any){
+      myExtObject.geolocate();;
   }
 
   
