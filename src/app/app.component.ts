@@ -51,9 +51,9 @@ export class AppComponent {
       () => console.log('Finished'));
   }
 
-  // callGeolocate(){
-  //     geolocate();
-  // }
+  callGeolocate(){
+      geolocate();
+  }
 
   
   //  getPet1(){
