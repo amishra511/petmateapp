@@ -6,6 +6,8 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { JsonConvert } from "json2typescript";
 
+declare var geolocate: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -48,6 +50,10 @@ export class AppComponent {
       error => alert(error),
       () => console.log('Finished'));
   }
+
+  // callGeolocate(){
+  //     geolocate();
+  // }
 
   
   //  getPet1(){
