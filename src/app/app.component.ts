@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  NgZone } from '@angular/core';
 import { PetMateService } from './petmate.service';
 import { PetFinder } from './petfinderapi/petfinder';
 import { RootObject } from './petfinderapi/rootobject';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Jsonp } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { JsonConvert } from "json2typescript";
-import '../assets/js/google-locations.js';
+// import '../assets/js/google-locations.js';
+// import { AgmCoreModule, AgmMap, MapsAPILoader} from '@agm/core';
 
-declare var locationObject: any;
+// declare var locationObject: any;
+// declare var google:any;
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,7 @@ declare var locationObject: any;
   styleUrls: ['./app.component.css'],
   providers: [PetMateService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   pet: string;
   tempObj: object;
   root: RootObject;
@@ -25,6 +27,10 @@ export class AppComponent {
     private petMateService: PetMateService, private http: Http
     // private router: Router
   ) { }
+
+  ngOnInit(){
+  
+  }
   getPetObject() {  
           JsonConvert.debugMode = true; // print some debug data
     // JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
@@ -52,9 +58,18 @@ export class AppComponent {
       () => console.log('Finished'));
   }
 
-  callGeolocate(event: any){
-      locationObject.geolocate();
+  getLocation(){
+    this.petMateService.getLocation().subscribe(data => {
+      alert(JSON.stringify(data))
+      console.log(JSON.stringify(data));
+    },
+    error => console.log("----Error:"+error),
+      () => console.log('Finished'));
   }
+
+  // callGeolocate(event: any){
+  //     locationObject.geolocate();
+  // }
 
   
   //  getPet1(){
