@@ -40,7 +40,7 @@ private url = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet';
     getLocation(){
       // return this.http.get('https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&libraries=places')
       // .map(res => res.json());
-      return this.jsonp.get('https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&libraries=places')
+      return this.jsonp.get('https://maps.googleapis.com/maps/api/js?key=AIzaSyDv_S-fo0_eOrfU8MAj3QirW0lTk07a1HI&libraries=places')
       .map(res => res.json());
 
     }
