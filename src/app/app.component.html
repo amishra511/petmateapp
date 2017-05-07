@@ -3,11 +3,15 @@
     <h1> Hello World</h1>
   <button (click)="getPet1()"> Fetch Pet</button>
   <br/>
-  <div id="locationField">
+  <!--<div id="locationField">
   <input id="autocomplete" placeholder="Enter your address"
          (keyup)="getLocation()" type="text"/>     
 
-</div>
+</div>-->
+    <input #term (keyup)="getLocation(term.value)"/>
+    <ul>
+      <li *ngFor="let item of items | async">{{item.label}}</li>
+    </ul>
   <!--{{root.petfinder.pet.id}}-->
   <!--{{pet}}-->
 </h1>
