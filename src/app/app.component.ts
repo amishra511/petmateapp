@@ -7,6 +7,15 @@ import 'rxjs/add/operator/map';
 import { JsonConvert } from "json2typescript";
 import { Observable } from 'rxjs/Observable';
 import { Suggestion } from './heremaps/suggestion';
+
+/////////////////////////////////////////////////////////
+////These are additional import for smart wikipedia example emulation
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+//////////////////////////////////////////
+
 // import '../assets/js/google-locations.js';
 // import { AgmCoreModule, AgmMap, MapsAPILoader} from '@agm/core';
 
@@ -33,9 +42,7 @@ export class AppComponent implements OnInit {
     // private router: Router
   ) { }
 
-  ngOnInit() {
-
-  }
+  
   getPetObject() {
     JsonConvert.debugMode = true; // print some debug data
     // JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
@@ -67,6 +74,19 @@ export class AppComponent implements OnInit {
   getLocation(term: string) {
     //Do not subscribe to the observable, directly use it otherwise 'async' will give error in html
     this.items = this.petMateService.getLocation(term);
+  }
+
+//Changes based on smart wikipedia example, in order to make data-list in html work for autosuggest
+private searchTermStream = new Subject<string>();
+  getLocation1(term:string){
+      this.searchTermStream.next(term); 
+  }
+
+  ngOnInit() {
+    this.items = this.searchTermStream
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap((term: string) => this.petMateService.getLocation(term));
   }
 
 

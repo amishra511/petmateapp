@@ -1,0 +1,45 @@
+.input-wrapper{
+    position:relative;
+    
+    margin:50px 0 0 70px; /* for example positioning */
+}
+.dropdown{
+    position:absolute;
+}
+
+
+/* old styles */
+body {
+font:0.8em Verdana;
+    }
+
+    .autosuggest, .dropdown, .result {
+        margin:0;
+        padding:0;
+        border:0;
+        width:250px;
+      }
+
+      .autosuggest {
+        padding:4px;
+        border:1px solid #000;
+
+      }
+
+      .result {
+        width:260px;
+        list-style:none;
+      }
+
+      .result li {
+        padding:5px;
+        border:1px solid #000;
+        border-top:0;
+        cursor: pointer;
+
+      }
+
+      .result li:hover {
+        background:#333;
+        color:#fff;
+      }
