@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   pet: string;
   tempObj: object;
   root: RootObject;
+  location:string;
   
   items:Observable<Suggestion[]>;
  
@@ -71,9 +72,17 @@ export class AppComponent implements OnInit {
       () => console.log('Finished'));
   }
 
-  getLocation(term: string) {
+  getLocation(term: string, event: any) {
     //Do not subscribe to the observable, directly use it otherwise 'async' will give error in html
     this.items = this.petMateService.getLocation(term);
+    // if (event.keyCode == 38)
+    //     console.log("up arrow");
+    // else if (event.keyCode == 39)
+    //     console.log("right arrow");
+    // else if (event.keyCode == 40)
+    //     console.log("down arrow");
+    // else if (event.keyCode == 37)
+    //     console.log("left arrow");
   }
 
 //Changes based on smart wikipedia example, in order to make data-list in html work for autosuggest
@@ -87,6 +96,12 @@ private searchTermStream = new Subject<string>();
       .debounceTime(300)
       .distinctUntilChanged()
       .switchMap((term: string) => this.petMateService.getLocation(term));
+  }
+
+  onLocationSelect(item: Suggestion){
+    console.log(item.label);
+    this.location = item.label;
+    this.items = null;
   }
 
 

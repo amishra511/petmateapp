@@ -27,11 +27,11 @@
 
     <div class="input-wrapper">
       <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
-      <input #term (keyup)="getLocation(term.value)" class="autosuggest" />
+      <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" />
 
       <div class="dropdown">
-        <ul class="result">
-          <li *ngFor="let item of items | async">{{item.label}}</li>
+        <ul class="result" >
+          <li *ngFor="let item of items | async" (click)="onLocationSelect(item)">{{item.label}}</li>
         </ul>
 
       </div>
