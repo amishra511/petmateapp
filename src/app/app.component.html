@@ -28,8 +28,8 @@
 <div class="input-wrapper">
   <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
   <div>
-    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" />
-    <button (click)="findPets()"> Fetch Pet</button>
+    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" placeholder="Enter Location" />
+    <button (click)="findPets()"> Find Pets</button>
   </div>
 
   <div class="dropdown">
