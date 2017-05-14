@@ -10,36 +10,36 @@ import {JsonObject, JsonProperty} from "json2typescript";
 
 @JsonObject
 export class PetfinderPetRecord{
-    @JsonProperty("id")
+    // @JsonProperty("id")
     public id:number = undefined;
-    @JsonProperty("shelterId")
+    // @JsonProperty("shelterId")
     public shelterId: string = undefined;
-    @JsonProperty("shelterPetId")
+    // @JsonProperty("shelterPetId")
     public shelterPetId: string = undefined;
-    @JsonProperty("name")
+    // @JsonProperty("name")
     public name:string = undefined;
-    @JsonProperty("animal")
+    // @JsonProperty("animal")
     public animal:AnimalType = undefined;
-    @JsonProperty("breeds")
+    // @JsonProperty("breeds")
     public breeds: PetfinderBreedList = undefined;
-    @JsonProperty("mix")
+    // @JsonProperty("mix")
     public mix:string = undefined;
-    @JsonProperty("age")
+    // @JsonProperty("age")
     public age:PetAgeType = undefined;
-    @JsonProperty("sex")
+    // @JsonProperty("sex")
     public sex:PetGenderType = undefined;
-    @JsonProperty("size")
+    // @JsonProperty("size")
     public size: PetSizeType = undefined;
-    @JsonProperty("options")
+    // @JsonProperty("options")
     public options: Options = undefined;
-    @JsonProperty("description")
+    // @JsonProperty("description")
     public description: string = undefined;
-    @JsonProperty("lastUpdate")
+    // @JsonProperty("lastUpdate")
     public lastUpdate: string = undefined;
-    @JsonProperty("status")
+    // @JsonProperty("status")
     public status:string = undefined;
-    @JsonProperty("media")
+    // @JsonProperty("media")
     public media:Media = undefined;
-    @JsonProperty("contact")
+    // @JsonProperty("contact")
     public contact: PetContactType = undefined;
 }

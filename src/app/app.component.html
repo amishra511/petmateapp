@@ -1,8 +1,8 @@
 <h1>
   <h1>
-    <h1> Hello World</h1>
+    <!--<h1> Hello World</h1>
     <button (click)="getPet1()"> Fetch Pet</button>
-    <br/>
+    <br/>-->
 
 
     <!--Very basic autosuggest layout based on the heroes tutorial-->
@@ -25,14 +25,26 @@
   <!--<button (click)="getPetObject()"> Fetch Pet Object</button>-->
 </h1>
 
-    <div class="input-wrapper">
-      <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
-      <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" />
+<div class="input-wrapper">
+  <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
+  <div>
+    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" />
+    <button (click)="findPets()"> Fetch Pet</button>
+  </div>
 
-      <div class="dropdown">
-        <ul class="result" >
-          <li *ngFor="let item of items | async" (click)="onLocationSelect(item)">{{item.label}}</li>
-        </ul>
-
-      </div>
-    </div>
+  <div class="dropdown">
+    <ul class="result">
+      <li *ngFor="let item of items | async" (click)="onLocationSelect(item)">{{item.label}}</li>
+    </ul>
+  </div>
+</div>
+<br/>
+<div>
+  <div *ngFor="let pet of pets" class="gallery">
+    <!--<a target="_blank" href="fjords.jpg">-->
+    <img src={{pet.media.photos.photo[3].content}} alt="Fjords" width="300" height="200">
+ 
+    <div class="desc">{{pet.name}}</div>
+  </div>
+<br/>
+</div>

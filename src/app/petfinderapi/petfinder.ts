@@ -10,22 +10,22 @@ import {JsonObject, JsonProperty} from "json2typescript";
 
 @JsonObject
 export class PetFinder{
-       @JsonProperty("header")
+    //    @JsonProperty("header")
     public header: PetfinderHeaderType = undefined;
-       @JsonProperty("lastOffset")
+    //    @JsonProperty("lastOffset")
     public lastOffset: string = undefined;
-       @JsonProperty("auth")
+    //    @JsonProperty("auth")
     public auth: PetfinderAuthData = undefined;
-       @JsonProperty("pet")
+    //    @JsonProperty("pet")
     public pet:PetfinderPetRecord = undefined;
-       @JsonProperty("petIds")
+    //    @JsonProperty("petIds")
     public petIds:PetfinderPetIdList = undefined;
-       @JsonProperty("pets")
+    //    @JsonProperty("pets")
     public pets: PetfinderPetRecordList = undefined;
-       @JsonProperty("breeds")
+    //    @JsonProperty("breeds")
     public breeds: PetfinderBreedList = undefined;
-       @JsonProperty("shelter")
+    //    @JsonProperty("shelter")
     public shelter: PetfinderShelterRecord = undefined;
-       @JsonProperty("shelters")
+    //    @JsonProperty("shelters")
     public shelters: PetfinderShelterRecordList= undefined;
 }

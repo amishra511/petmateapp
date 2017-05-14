@@ -3,6 +3,6 @@ import {JsonObject, JsonProperty} from "json2typescript";
 
 @JsonObject
 export class PetfinderPetRecordList{
-     @JsonProperty("pet")
-    public pet: PetfinderPetRecord = undefined;
+    //  @JsonProperty("pet", [PetfinderPetRecord])
+    public pet: PetfinderPetRecord[] = undefined;
 }

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Jsonp, URLSearchParams } from '@angular/http';
 import { PetFinder } from './petfinderapi/petfinder';
+import { RootObject } from './petfinderapi/rootobject';
+import { PetfinderPetRecord } from './petfinderapi/petfinderpetrecord';
+
 import { HereRootObject } from './heremaps/rootobject';
 import { JsonConvert } from "json2typescript";
 import { Suggestion } from './heremaps/suggestion';
@@ -21,12 +24,15 @@ export class PetMateService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private apiKey = 'af5b5f431f539fffcaf29f89b2081577';
   private apiSecret = 'c300fd8006ebeb491e8a8407d209ef09';
-  private petMateUrl = 'http://api.petfinder.com/';  // URL to web api
+  private petMateUrl = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/';  // URL to web api
   private formatParam = 'format=json';
   private methodRandomPet = 'pet.get';
+  private methodFindPet = 'findpet';
+  private methodGetPet = 'pet.get';
   private result = '';
   private url1 = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953';
   private url = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet';
+  // http://petmate-lifeone.rhcloud.com/rest/petmate-api/findpet?location=34116
 
   //  private here: string;
   //   private addResult:string[];
@@ -42,6 +48,20 @@ export class PetMateService {
     return this.http.get('https://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953&callback=initAutocomplete')
       .map(res => res.json());
 
+  }
+
+  findPets(location:string){
+    let url = this.petMateUrl + this.methodFindPet+'?location='+location;
+    console.log('api url:'+url);
+    // let params = new URLSearchParams();
+    // params.set('location', location);
+
+    return this.http.get(url)    
+    .map(res => {
+      console.log('Printing output:' + JSON.stringify( res.json()));
+       let petFinderRoot:RootObject = JsonConvert.deserializeString(JSON.stringify( res.json()), RootObject);
+       return petFinderRoot.petfinder.pets.pet;
+    });
   }
 
   getLocation(term: string) {

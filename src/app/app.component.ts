@@ -1,7 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PetMateService } from './petmate.service';
+////////////////////////////////////////////////////
+///PetFinder import
 import { PetFinder } from './petfinderapi/petfinder';
 import { RootObject } from './petfinderapi/rootobject';
+import { PetfinderPetRecordList } from './petfinderapi/petfinderpetrecordlist';
+import { PetfinderPetRecord } from './petfinderapi/petfinderpetrecord';
+
+////////////////////////////////////////////////////
+
 import { Headers, Http, Jsonp } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { JsonConvert } from "json2typescript";
@@ -33,8 +40,11 @@ export class AppComponent implements OnInit {
   tempObj: object;
   root: RootObject;
   location:string;
+  selectLocation:Suggestion;
   
   items:Observable<Suggestion[]>;
+
+  pets:PetfinderPetRecord[];
  
   private url1 = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953';
   private testUrl = 'http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC';
@@ -85,6 +95,15 @@ export class AppComponent implements OnInit {
     //     console.log("left arrow");
   }
 
+findPets(){
+  console.log('Finding Pets');
+  this.petMateService.findPets(this.selectLocation.address.postalCode).subscribe(
+    pets => this.pets = pets 
+  );
+ 
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
 //Changes based on smart wikipedia example, in order to make data-list in html work for autosuggest
 private searchTermStream = new Subject<string>();
   getLocation1(term:string){
@@ -92,15 +111,29 @@ private searchTermStream = new Subject<string>();
   }
 
   ngOnInit() {
+    this.pets=[];
     this.items = this.searchTermStream
       .debounceTime(300)
       .distinctUntilChanged()
       .switchMap((term: string) => this.petMateService.getLocation(term));
   }
 
+  ///////////////////////////////////////////////////////////////////
+
   onLocationSelect(item: Suggestion){
-    console.log(item.label);
+    if(null != item.address.city){
+      console.log(item.address.city);
+    }
+    if(null != item.address.postalCode){
+      console.log(item.address.postalCode);
+
+    }
+    if(null != item.address.county){
+      console.log(item.address.county);
+    }
+    // console.log(item.address.);
     this.location = item.label;
+    this.selectLocation = item;
     this.items = null;
   }
 
