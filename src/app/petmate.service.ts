@@ -24,7 +24,7 @@ export class PetMateService {
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private apiKey = 'af5b5f431f539fffcaf29f89b2081577';
   private apiSecret = 'c300fd8006ebeb491e8a8407d209ef09';
-  private petMateUrl = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/';  // URL to web api
+  private petMateUrl = 'https://petmate-lifeone.rhcloud.com/rest/petmate-api/';  // URL to web api
   private formatParam = 'format=json';
   private methodRandomPet = 'pet.get';
   private methodFindPet = 'findpet';
