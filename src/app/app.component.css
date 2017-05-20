@@ -64,3 +64,16 @@ div.desc{
   text-align:center;
 }
 
+.left {
+  float: left;
+  width: 250px;
+  text-align: right;
+  margin: 2px 10px;
+}
+
+.right {
+  float: left;
+  text-align: left;
+  margin: 2px 10px;
+}
+

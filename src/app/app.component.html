@@ -1,47 +1,37 @@
-<h1>
-  <h1>
-    <!--<h1> Hello World</h1>
-    <button (click)="getPet1()"> Fetch Pet</button>
-    <br/>-->
-
-
-    <!--Very basic autosuggest layout based on the heroes tutorial-->
-    <!--<input #term (keyup)="getLocation(term.value)"/>
-    <ul>
-      <li *ngFor="let item of items | async">{{item.label}}</li>
-    </ul>-->
-
-    <!--Datalist option did not work seamlessley for autosuggest-->
-    <!--<input #term (keyup)="getLocation1(term.value)" list="locations">
-  <datalist id="locations">
-    <option *ngFor="let item of items | async" value="{{item.label}}"> 
-  </datalist>-->
-
-
-    <!--{{root.petfinder.pet.id}}-->
-    <!--{{pet}}-->
-  </h1>
-  <br/>
-  <!--<button (click)="getPetObject()"> Fetch Pet Object</button>-->
-</h1>
-
-<div class="input-wrapper">
-  <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
-  <div>
-    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" placeholder="Enter Location"
-    />
-    <button (click)="findPets()"> Find Pets</button>
+<!--<div style="display:table">
+  <div style="display:table-row">
+    <div style="display:table-column">
+      <input #term (keyup)="getLocation(term.value, $event)" class="form-control" [(ngModel)]="location" placeholder="Enter Location"
+        type="text" style="width:50px" />
+    </div>
+    <div style="display:table-column">
+      <button (click)="findPets()" class="btn-secondary"> Find Pets</button>
+    </div>
   </div>
-
-  <div class="dropdown">
-    <ul class="result">
-      <li *ngFor="let item of items | async" (click)="onLocationSelect(item)">{{item.label}}</li>
-    </ul>
+</div>-->
+<br/>
+<div>
+  <div>
+    <div class="left">
+      <input #term (keyup)="getLocation(term.value, $event)" class="form-control" [(ngModel)]="location" placeholder="Enter Location "
+        type="text" />
+      <div class="dropdown">
+        <ul class="result">
+          <li *ngFor="let item of items | async" (click)="onLocationSelect(item)">{{item.label}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <button (click)="findPets()" class="btn-secondary"> Find Pets</button>
+    </div>
   </div>
 </div>
 <br/>
+<br/>
+<br/>
+<!---->
 
-<div class="people-nearby">
+<!--<div class="people-nearby">-->
   <div class="nearby-user">
     <div *ngFor="let pet of pets" class="row">
       <div class="col-md-2 col-sm-2">
@@ -53,11 +43,11 @@
         <p class="text-muted">500m away</p>
       </div>
       <div class="col-md-3 col-sm-3">
-        <button class="btn btn-primary pull-right">Add Friend</button>
+        <button class="btn btn-primary pull-right">Pet Mi</button>
       </div>
     </div>
   </div>
-</div>
+<!--</div>-->
 
 <!--<div>
     <div *ngFor="let pet of pets" class="gallery">
