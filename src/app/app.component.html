@@ -28,7 +28,8 @@
 <div class="input-wrapper">
   <!--<input type="text" class="autosuggest"> <input type="submit" value="Search">-->
   <div>
-    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" placeholder="Enter Location" />
+    <input #term (keyup)="getLocation(term.value, $event)" class="autosuggest" [(ngModel)]="location" placeholder="Enter Location"
+    />
     <button (click)="findPets()"> Find Pets</button>
   </div>
 
@@ -39,12 +40,29 @@
   </div>
 </div>
 <br/>
-<div>
-  <div *ngFor="let pet of pets" class="gallery">
-    <!--<a target="_blank" href="fjords.jpg">-->
-    <img src={{pet.media.photos.photo[3].content}} alt="Fjords" width="300" height="200">
- 
-    <div class="desc">{{pet.name}}</div>
+
+<div class="people-nearby">
+  <div class="nearby-user">
+    <div *ngFor="let pet of pets" class="row">
+      <div class="col-md-2 col-sm-2">
+        <img src="{{pet.media.photos.photo[3].content}}" alt="user" class="profile-photo-lg" />
+      </div>
+      <div class="col-md-7 col-sm-7">
+        <h5><a href="#" class="profile-link">{{pet.name}}</a></h5>
+        <p>{{pet.breeds.breed}}</p>
+        <p class="text-muted">500m away</p>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <button class="btn btn-primary pull-right">Add Friend</button>
+      </div>
+    </div>
   </div>
-<br/>
 </div>
+
+<!--<div>
+    <div *ngFor="let pet of pets" class="gallery">
+      <img src={{pet.media.photos.photo[3].content}} alt="Fjords" width="300" height="200">
+      <div class="desc">{{pet.name}}</div>
+    </div>
+    <br/>
+</div>-->
