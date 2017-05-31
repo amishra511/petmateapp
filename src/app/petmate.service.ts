@@ -26,12 +26,12 @@ export class PetMateService {
   private apiSecret = 'c300fd8006ebeb491e8a8407d209ef09';
   private petMateUrl = 'https://petmate-lifeone.rhcloud.com/rest/petmate-api/';  // URL to web api
   private formatParam = 'format=json';
-  private methodRandomPet = 'pet.get';
+  private methodRandomPet = 'getpet';
   private methodFindPet = 'findpet';
-  private methodGetPet = 'pet.get';
+  private methodGetPet = 'getpet';
   private result = '';
-  private url1 = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953';
-  private url = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet';
+  // private url1 = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953';
+  // private url = 'http://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet';
   // http://petmate-lifeone.rhcloud.com/rest/petmate-api/findpet?location=34116
 
   //  private here: string;
@@ -41,12 +41,15 @@ export class PetMateService {
 
   }
 
-  getPet() {
+  getPet(id:number) {
     // let headers = new Headers({ 'Content-Type': 'application/json' });
     // let options = new RequestOptions({ headers: headers });
-
-    return this.http.get('https://petmate-lifeone.rhcloud.com/rest/petmate-api/getpet?id=34668953&callback=initAutocomplete')
-      .map(res => res.json());
+    const url = this.petMateUrl + this.methodGetPet+'?id='+id;
+    return this.http.get(url)    
+      .map(res => {
+        let petFinderRoot:RootObject = JsonConvert.deserializeString(JSON.stringify( res.json()), RootObject);
+        return petFinderRoot.petfinder.pet;
+      });
 
   }
 

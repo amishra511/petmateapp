@@ -1,0 +1,151 @@
+<div class="container">
+
+  <!-- Timeline
+      ================================================= -->
+  <div class="timeline">
+    <div class="timeline-cover">
+
+      <!--Timeline Menu for Large Screens-->
+      <div class="timeline-nav-bar hidden-sm hidden-xs">
+        <div class="row">
+          <div class="col-md-3">
+            <div *ngFor="let photo of pet?.media.photos.photo" class="profile-info">
+              <img *ngIf="isProfilePic(photo)" src="{{photo.content}}" alt="" class="img-responsive profile-photo" />
+            </div>
+            <h3>{{pet?.name}}</h3>
+              <p class="text-muted">{{pet?.breeds.breed}}</p>
+          </div>
+          <div class="col-md-9">
+
+            <!--<ul class="list-inline profile-menu">
+                  <li><a href="timeline.html">Timeline</a></li>
+                  <li><a href="timeline-about.html" class="active">About</a></li>
+                  <li><a href="timeline-album.html">Album</a></li>
+                  <li><a href="timeline-friends.html">Friends</a></li>
+                </ul>-->
+            <ul class="follow-me list-inline">
+              <li>1,299 people Pet Mi</li>
+              <li><button class="btn-primary">Pet Mi</button></li>
+            </ul>
+          <div>
+            <p><b>Species:</b> <span class="text-grey">{{pet?.animal}}</span></p>
+          </div>
+          <div>
+            <p><b>Age:</b> <span class="text-grey">{{pet?.age}}</span></p>
+          </div>
+          <div>
+            <p><b>Sex:</b> <span class="text-grey">{{getEnumValue(pet?.sex)}}</span></p>
+          </div>
+          <!--<div>
+            <p><b>Location:</b> <span class="text-grey">{{getEnumValue(pet?.sex)}}</span></p>
+            <p></p>
+          </div>-->
+          
+            <!--<ul class="follow-me list-inline">
+              <li>1,299 people Pet Mi</li>
+              <li><button class="btn-primary">Pet Mi</button></li>
+            </ul>
+            <div class="organization">
+              <div class="work-info">
+                <p><b>Species:</b> <span class="text-grey">{{pet?.animal}}</span></p>
+              </div>
+            </div>
+            <div class="organization">
+              <div class="work-info">
+                <p><b>Age:</b> <span class="text-grey">{{pet?.age}}</span></p>
+              </div>
+            </div>
+            <div class="organization">
+              <div class="work-info">
+                <p><b>Breed:</b> <span class="text-grey">{{pet?.breeds?.breed}}</span></p>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+      <!--Timeline Menu for Large Screens End-->
+
+      <!--Timeline Menu for Small Screens-->
+      <div class="navbar-mobile hidden-lg hidden-md">
+        <div *ngFor="let photo of pet?.media.photos.photo" class="profile-info">
+              <img *ngIf="isProfilePic(photo)" src="{{photo.content}}" alt="" class="img-responsive profile-photo" />
+            </div>
+            <h3>{{pet?.name}}</h3>
+              <p class="text-muted">{{pet?.breeds.breed}}</p>
+        <div class="mobile-menu">
+          <ul class="list-inline">
+            <li><a href="timline.html">Timeline</a></li>
+            <li><a href="timeline-about.html" class="active">About</a></li>
+            <li><a href="timeline-album.html">Album</a></li>
+            <li><a href="timeline-friends.html">Friends</a></li>
+          </ul>
+          <button class="btn-primary">Add Friend</button>
+        </div>
+      </div>
+      <!--Timeline Menu for Small Screens End-->
+
+    </div>
+    <div id="page-contents">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+
+          <!-- About
+              ================================================= -->
+          <div class="about-profile">
+            <div class="about-content-block">
+              <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>About Me</h4>
+              <p>{{pet?.description}}</p>
+            </div>
+            <div class="about-content-block">
+              <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Shelter Details</h4>
+              <div class="organization">
+                <div class="work-info">
+                  <p>Shelter Id - <span class="text-grey">{{pet?.shelterId}}</span></p>
+                </div>
+              </div>
+              <!--<div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Envato</h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
+                    </div>
+                  </div>
+                  <div class="organization">
+                    <img src="images/envato.png" alt="" class="pull-left img-org" />
+                    <div class="work-info">
+                      <h5>Envato</h5>
+                      <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
+                    </div>
+                  </div>-->
+            </div>
+            <div class="about-content-block">
+              <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
+              <!--<p>{{getFullAddress(pet?.contact)}}</p>-->
+              <div class="google-maps">
+                <div id="map" class="map"></div>
+              </div>
+            </div>
+            <div class="about-content-block">
+              <h4 class="grey"><i class="ion-ios-heart-outline icon-in-title"></i>Interests</h4>
+              <ul class="interests list-inline">
+                <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
+                <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
+                <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
+                <li><span class="int-icons" title="Traveling"><i class="icon ion-android-plane"></i></span></li>
+                <li><span class="int-icons" title="Eating"><i class="icon ion-android-restaurant"></i></span></li>
+              </ul>
+            </div>
+            <div class="about-content-block">
+              <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
+              <ul>
+                <li><a href="">Russian</a></li>
+                <li><a href="">English</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

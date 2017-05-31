@@ -63,24 +63,24 @@ export class AppComponent implements OnInit {
     console.log("Pet id:t" + this.root.petfinder.pet.id);
   }
 
-  getPet() {
-    this.petMateService.getPet().subscribe(
+  getPet(id:number) {
+    this.petMateService.getPet(id).subscribe(
       data => this.pet = JSON.stringify(data),
       error => alert(error),
       () => console.log('Finished'));
   }
 
-  getPet1() {
-    this.petMateService.getPet().subscribe(
-      data => {
-      this.pet = JSON.stringify(data);
-        console.log(this.pet);
-        this.root = JsonConvert.deserializeString(this.pet, RootObject);
-        console.log("Pet id:t" + this.root.petfinder.pet.id);
-      },
-      error => alert(error),
-      () => console.log('Finished'));
-  }
+  // getPet1() {
+  //   this.petMateService.getPet().subscribe(
+  //     data => {
+  //     this.pet = JSON.stringify(data);
+  //       console.log(this.pet);
+  //       this.root = JsonConvert.deserializeString(this.pet, RootObject);
+  //       console.log("Pet id:t" + this.root.petfinder.pet.id);
+  //     },
+  //     error => alert(error),
+  //     () => console.log('Finished'));
+  // }
 
   getLocation(term: string, event: any) {
     //Do not subscribe to the observable, directly use it otherwise 'async' will give error in html
@@ -136,6 +136,10 @@ private searchTermStream = new Subject<string>();
     this.selectLocation = item;
     this.items = null;
   }
+
+  // onSelectPet(pet:PetfinderPetRecord){
+    
+  // }
 
 
 }
